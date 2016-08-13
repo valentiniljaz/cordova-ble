@@ -165,6 +165,12 @@ public class BLE
 			else if ("reset".equals(action)) {
 				reset(args, callbackContext);
 			}
+			else if ("isAvailable".equals(action)) {
+            	isAvailable(args, callbackContext);
+            }
+            else if ("isEnabled".equals(action)) {
+                isEnabled(args, callbackContext);
+            }
 			// Peripheral API
 			else if ("startAdvertise".equals(action)) {
 				startAdvertise(args, callbackContext);
@@ -1032,6 +1038,23 @@ public class BLE
 		}
 		cc.error("Unknown state: "+state);
 	}
+
+	private void isAvailable(final CordovaArgs args, final CallbackContext callbackContext) throws JSONException {
+        int isAvailable = 0;
+        if (mContext.getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) {
+            isAvailable = 1;
+        }
+        callbackContext.success(isAvailable);
+    }
+
+    private void isEnabled(final CordovaArgs args, final CallbackContext callbackContext) throws JSONException {
+        int isEnabled = 0;
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (bluetoothAdapter != null && bluetoothAdapter.isEnabled()) {
+            isEnabled = 1;
+        }
+        callbackContext.success(isEnabled);
+    }
 
 	// Receives notification about Bluetooth power on and off. Used by reset().
 	class BluetoothStateReceiver extends BroadcastReceiver

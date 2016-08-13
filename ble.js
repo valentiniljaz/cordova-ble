@@ -663,6 +663,22 @@ exports.reset = function(win, fail) {
 	exec(win, fail, 'BLE', 'reset', []);
 };
 
+/** Check if BLE is available on the device
+ *
+ * @param {emptyCallback} win
+ */
+exports.isAvailable = function(win) {
+	exec(win, null, 'BLE', 'isAvailable', []);
+};
+
+/** Check if BLE is enabled on the device
+ *
+ * @param {emptyCallback} win
+ */
+exports.isEnabled = function(win) {
+	exec(win, null, 'BLE', 'isEnabled', []);
+};
+
 /** Converts an ArrayBuffer containing UTF-8 data to a JavaScript String.
 * @param {ArrayBuffer} a
 * @returns string

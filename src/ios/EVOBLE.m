@@ -1274,6 +1274,32 @@ static int EVOPerhiperalAssociatedObjectKey = 42;
 	[self sendOkClearCallback: command.callbackId];
 }
 
+
+- (void) isAvailable: (CDVInvokedUrlCommand*)command
+{
+	// BLE is available for all supported devices
+	[self
+		sendInt: 1
+		forCallback: command.callbackId
+		keepCallback: NO];
+}
+
+- (void) isEnabled: (CDVInvokedUrlCommand *)command
+{
+    //See if Bluetooth is currently enabled
+    if (self.central != nil && self.central.state == CBCentralManagerStatePoweredOn) {
+    	[self
+			sendInt: 1
+			forCallback: command.callbackId
+			keepCallback: NO];
+    } else {
+    	[self
+			sendInt: 0
+			forCallback: command.callbackId
+			keepCallback: NO];
+    }
+}
+
 /****************************************************************/
 /*               Implemented Interface Methods                  */
 /****************************************************************/

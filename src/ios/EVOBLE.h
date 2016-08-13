@@ -100,6 +100,8 @@ typedef void (^EVOCommandBlock)(void);
 - (void) enableNotification: (CDVInvokedUrlCommand*)command;
 - (void) disableNotification: (CDVInvokedUrlCommand*)command;
 - (void) reset: (CDVInvokedUrlCommand*)command;
+- (void) isAvailable: (CDVInvokedUrlCommand*)command;
+- (void) isEnabled: (CDVInvokedUrlCommand*)command;
 
 // Free data associated with a periperal. Disconnect the
 // peripheral if the flag shouldDisconnect is true.
