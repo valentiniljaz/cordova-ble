@@ -1320,7 +1320,7 @@ static int EVOPerhiperalAssociatedObjectKey = 42;
 		initWithDelegate: self
 		queue: nil
 		options: @{
-			CBCentralManagerOptionRestoreIdentifierKey: @"EVOCentralManagerIdentifier",
+			//CBCentralManagerOptionRestoreIdentifierKey: @"EVOCentralManagerIdentifier",
 			CBCentralManagerOptionShowPowerAlertKey: @YES }];
 
 	self.peripherals = [NSMutableDictionary dictionary];
